@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User Details</title>
+    <style>
+        .details {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .details h1 {
+            font-size: 24px;
+        }
+        .details p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <h1>User Details</h1>
+        <p id="username"></p>
+        <p id="email"></p>
+        <p id="password"></p>
+        <p id="cpassword"></p>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+        if (userDetails) {
+            // Display user details
+            document.getElementById('username').innerText = `Username: ${userDetails.username}`;
+            document.getElementById('email').innerText = `Email: ${userDetails.email}`;
+            document.getElementById('password').innerText = `Password: ${userDetails.password}`;
+            document.getElementById('cpassword').innerText = `Confirm Password: ${userDetails.cpassword}`;
+        } else {
+            // Handle the case where no user details are stored
+            document.querySelector('.details').innerHTML = '<p>No user details found.</p>';
+        }
+    </script>
+</body>
+</html>
